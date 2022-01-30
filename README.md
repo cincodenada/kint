@@ -21,16 +21,16 @@ See also:
 <table border="0" width="100%">
 <tr>
 <td width="33%">
-<img src="https://github.com/kinx-project/kint/raw/master/pcb-3d-render-front-v2021-04-25.png">
+<img src="https://github.com/kinx-project/kint/raw/master/pcb-3d-render-front-v2021-06-26.png">
 3D render (front, LEDs)
 </td>
 <td width="33%">
-<img src="https://github.com/kinx-project/kint/raw/master/pcb-3d-render-back-v2021-04-25.png">
+<img src="https://github.com/kinx-project/kint/raw/master/pcb-3d-render-back-v2021-06-26.png">
 3D render (back, components)
 </td>
 <td width="33%">
-<a href="https://github.com/kinx-project/kint/blob/master/schematic-v2021-04-25.pdf"><img
-src="https://github.com/kinx-project/kint/raw/master/thumbnail-schematic-v2021-04-25.jpg"></a>
+<a href="https://github.com/kinx-project/kint/blob/master/schematic-v2021-06-26.pdf"><img
+src="https://github.com/kinx-project/kint/raw/master/thumbnail-schematic-v2021-06-26.jpg"></a>
 schematic
 </td>
 </tr>
@@ -74,9 +74,8 @@ schematic
      I made!
 
 * The kinT is made for the newer Teensy 3.x and 4.x series, which will remain
-  widely available for years to come, whereas [Teensy++ 2.0 is only guaranteed
-  until August 2021 and expected to be discontinued in
-  2022](https://www.pjrc.com/store/teensypp.html).
+  widely available for years to come, whereas the [Teensy++ 2.0 is
+  discontinued](https://www.pjrc.com/store/teensypp.html).
 
 * The kinT is a smaller PCB (4.25 x 3.39 inches, or 108.0 x 86.1 mm), which makes it:
 
@@ -93,7 +92,7 @@ schematic
 
 * The kinT is a good starting point for your own project:
 
-   * kinT was designed in the open source [KiCad](https://kicad-pcb.org/)
+   * kinT was designed in the open source [KiCad](https://kicad.org/)
      program, meaning you do not need any license subscriptions.
 
    * The clear silkscreen and schematic make development and debugging easier.
@@ -107,8 +106,8 @@ schematic
 
 ## Compatibility: which Teensy to use?
 
-The kinT keyboard controller was made for the Teensy 3.x series of devices,
-which are ARM based.
+The kinT keyboard controller was made for the Teensy 3.x and 4.x series of
+devices, which are ARM based.
 
 The older Atmel based Teensy++ 2.0 are also supported, but require slightly more
 complicated soldering: not connecting a few clashing Teensy++ 2.0 pins and
@@ -116,14 +115,15 @@ closing 3 soldering jumpers.
 
 Which Teensy should you buy for your build? Here are a few considerations:
 
-* The Teensy 3.6 is what I have been using for years now.
+* I have been using the Teensy 4.1 for many months without problems.
 
-* The Teensy++ 2.0 seems to be the most popular choice, also because it was the
-  only option with the the predecessor keyboard controller. Note that the
-  [Teensy++ 2.0 is only guaranteed until August 2021 and expected to be
-  discontinued in 2022](https://www.pjrc.com/store/teensypp.html)
+* I used the Teensy 3.6 for multiple years, and many others are happy with it,
+  too.
 
-  > We do expect to discontinue Teensy 2.0 and Teensy++ 2.0 in 2022
+* The Teensy++ 2.0 used to be the most popular choice, in part because it was
+  the only option with the the predecessor keyboard controller. The [Teensy++
+  2.0 is discontinued](https://www.pjrc.com/store/teensypp.html), so I would no
+  longer recommend it for new keyboard builds.
 
 * If you are an advanced user of the QMK firmware, note that despite QMK working
   on the Teensy 3.6, [some features are not yet
@@ -135,25 +135,31 @@ Which Teensy should you buy for your build? Here are a few considerations:
 
 TODO: add power consumption as a column. relevant for using the keyboard with a laptop on the go
 
-| teensy         | LEDs | Cost   | USB | clock speed | MCU         | QMK           |
-|----------------|------|--------|-----|-------------|-------------|---------------|
-| teensy++ 2.0   | yes  | $24.00 | 1.1 | 16 MHz AVR  | AT90USB1286 | since [5cbac94](https://github.com/qmk/qmk_firmware/commit/5cbac94d08257a6149c5717d7f25efab7af9c0fa) |
-| ~~teensy 3.0~~ | no   |        | 1.1 | 48 MHz M4   | MK20DX128   | untested      |
-| ~~teensy 3.1~~ | no   |        | 1.1 |             | MK20DX256   | untested      |
-| teensy LC      | no   | $11.65 | 1.1 | 48 MHz M0+  |             | [untested](https://github.com/kinx-project/kint/issues/1) |
-| teensy 3.2     | no   | $19.80 | 1.1 | 72 MHz M4   |             | [issue](https://github.com/kinx-project/kint/issues/2) |
-| teensy 3.5     | yes  | $24.25 | 1.1 | 120 MHz M4F | MK64FX      | [issue](https://github.com/kinx-project/kint/issues/3) |
-| teensy 3.6     | yes  | $29.25 | 1.1 | 180 MHz M4F | MK66FX      | since [9d3b11d](https://github.com/qmk/qmk_firmware/commit/9d3b11d4856f478e2c91788cf77a52e62ec85d19)
-| teensy 4.0     | no   | $19.95 | 2.0 | 600 MHz M7  | MIMXRT1062  | [in progress](https://github.com/kinx-project/kint/issues/4) |
-| teensy 4.1     | yes  | $26.85 | 2.0 | 600 MHz M7  | MIMXRT1062  | [in progress](https://github.com/kinx-project/kint/issues/5) |
+| teensy         | LEDs | Cost   | input latency | clock speed | MCU         | QMK                                                                   |
+|----------------|------|--------|---------------|-------------|-------------|-----------------------------------------------------------------------|
+| teensy++ 2.0   | yes  | $24.00 | 3.27ms        | 16 MHz AVR  | AT90USB1286 | 0.13.17 or newer                                                      |
+| ~~teensy 3.0~~ | no   |        |               | 48 MHz M4   | MK20DX128   | untested                                                              |
+| ~~teensy 3.1~~ | no   |        |               |             | MK20DX256   | untested                                                              |
+| teensy LC      | no   | $11.65 | ?             | 48 MHz M0+  |             | [untested](https://github.com/kinx-project/kint/issues/1)             |
+| teensy 3.2     | no   | $19.80 | ?             | 72 MHz M4   |             | unlikely ([interest?](https://github.com/kinx-project/kint/issues/2)) |
+| teensy 3.5     | yes  | $24.25 | ?             | 120 MHz M4F | MK64FX      | unlikely ([interest?](https://github.com/kinx-project/kint/issues/3)) |
+| teensy 3.6     | yes  | $29.25 | 1.97ms        | 180 MHz M4F | MK66FX      | 0.14.0 or newer                                                       |
+| teensy 4.0     | no   | $19.95 | 0.9ms         | 600 MHz M7  | MIMXRT1062  | 0.14.0 or newer                                                       |
+| teensy 4.1     | yes  | $26.85 | 0.9ms         | 600 MHz M7  | MIMXRT1062  | 0.14.0 or newer                                                       |
+
+See [this blog post for more details on keyboard input
+latency](https://michael.stapelberg.ch/posts/2021-05-08-keyboard-input-latency-qmk-kinesis/).
 
 ## Buying the board and components (Bill of materials)
 
-To buy the board, you can [order the kinT controller from OSH
-Park](https://oshpark.com/shared_projects/YSZAuKc0), or upload the
-[kint.kicad_pcb
-file](https://github.com/kinx-project/kint/blob/master/kicad/kint.kicad_pcb) to
-the manufacturing service you prefer.
+To buy the board, you can:
+
+* [order the kinT controller from OSH Park](https://oshpark.com/shared_projects/YSZAuKc0) starting at 72 USD
+* [order the kinT controller from Aisler](https://aisler.net/p/JQIIIJSL) starting at 18 EUR
+* [order the kinT controller from JLCPCB](https://github.com/kinx-project/kint/tree/master/gerbers/jlcpcb)
+* or upload the [kint.kicad_pcb
+  file](https://github.com/kinx-project/kint/blob/master/kicad/kint.kicad_pcb)
+  to the manufacturing service you prefer.
 
 To buy the components, check out the [kinT BOM in the Octopart BOM
 tool](https://octopart.com/bom-tool/4AnOAR3f), from where you can conveniently
@@ -254,15 +260,23 @@ desoldering JP1, JP2, and JP3, and reclosing the jumpers JP4, JP5, and JP6.
 
 ## Installing the firmware
 
-We have pre-built firmware (QMK default keymap and settings) available for the following variants:
+You can use the QMK Configurator online build tool to compile the QMK firmware for
+your kinT keyboard controller, or customize your layout.
 
-* [kinesis_kint2pp_default.hex](https://github.com/kinx-project/kint/blob/master/default-firmware/kinesis_kint2pp_default.hex) (Teensy++ 2.0)
-* [kinesis_kint36_default.hex](https://github.com/kinx-project/kint/blob/master/default-firmware/kinesis_kint36_default.hex) (Teensy 3.6)
+Alternatively, you can install the pre-built, tested firmware file (default QMK
+keymap and settings) we offer, for example to test whether issues are related to
+your self-compiled firmware.
+
+| Teensy           | QMK Configurator                                                             | pre-built, tested firmware                                                                                                                |
+|------------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| Teensy++ 2.0     | [QMK Configurator (kint2pp)](https://config.qmk.fm/#/kinesis/kint2pp/LAYOUT) | [kinesis_kint2pp_default.hex](https://github.com/kinx-project/kint/blob/master/default-firmware/kinesis_kint2pp_default.hex) (2020-07-09) |
+| Teensy 3.6       | [QMK Configurator (kint36)](https://config.qmk.fm/#/kinesis/kint36/LAYOUT)   | [kinesis_kint36_default.hex](https://github.com/kinx-project/kint/blob/master/default-firmware/kinesis_kint36_default.hex) (2020-07-09)   |
+| Teensy 4.0 / 4.1 | [QMK Configurator (kint41)](https://config.qmk.fm/#/kinesis/kint41/LAYOUT)   | TODO                                                                                                                                      |
 
 You can install these .hex files with the [Teensy
 Loader](https://www.pjrc.com/teensy/loader.html).
 
-To build your own firmware, see [QMK: Get
+To compile your own firmware, see [QMK: Get
 Started](https://docs.qmk.fm/#/?id=get-started) and refer to the [full Teensy
 compatibility chart](#reference-full-teensy-compatibility-chart) above to find
 the QMK branch to work with.
@@ -271,7 +285,7 @@ the QMK branch to work with.
 
 ### General technique: highlight connections in KiCad
 
-1. Install [KiCad](https://kicad-pcb.org/) (free and open source)
+1. Install [KiCad](https://kicad.org/) (free and open source)
 1. Clone https://github.com/kinx-project/kint/ and open `kicad/kint.pro` in KiCad
 1. Select `Tools` → `Edit PCB`
 1. Select `View` → `Flip Board View`, because the front side of kinT contains the LEDs, the back side contains the connectors.
@@ -292,7 +306,7 @@ a full debugging walk-through.
      if you are using the LED from the [Bill of Materials
      (BOM)](#buying-the-board-and-components-bill-of-materials).
 
-* Test your LEDs with a multimeter:
+* If your Teensy is not soldered yet (or removed from its socket), you can test your LEDs with a multimeter:
    * switch your multimeter to diode test mode
    * place the black probe (`COM`) on e.g. Teensy pin 12 (`LED_CAPS_LOCK`)
    * place the red probe on the anode (A) of your LED
