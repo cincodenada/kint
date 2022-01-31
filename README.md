@@ -260,9 +260,9 @@ Due to the space for the USB cable in the back, there's not enough room in the
 case for a standard socket header, but there are low-profile pin headers that
 do fit. [These square-pin socket headers](short-sockets) and [pins](short-pins)
 with 0.180" (4.57mm) insulation height have been verified to fit in the KB500,
-and will probably fit the KB600 as well. Round "Swiss-style" headers should
-also work, just make sure to get the appropriate matching pins for whatever
-socket you order.
+and will probably fit the KB600 as well. Round "Swiss-style" headers may also
+work, but make sure to get the appropriate matching pins for whatever socket
+you order.
 
 To build with socket headers, follow the [standard instructions
 above](#soldering-instructions-for-the-teensy-3x-or-4x), but instead of the
